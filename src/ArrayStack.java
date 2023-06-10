@@ -1,9 +1,10 @@
+import java.lang.reflect.Method;
 import java.util.Iterator;
 
 public class ArrayStack<T extends Cloneable> implements Stack<T> {
     private int counterOfItems;
     private Cloneable[] array;
-    private int maxCapacity;
+    private final int maxCapacity;
 
     public ArrayStack(int maxCapacity) throws NegativeCapacityException {
         try {
@@ -22,7 +23,7 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
     public void push(Cloneable element) throws StackOverflowException{
         try {
             if (this.size() < maxCapacity) {
-                array[this.size() + 1] = element;
+                array[this.size()] = element;
                 counterOfItems++;
             } else {
                 throw new StackOverflowException("The size of the array-stack reached it's maximum capacity");
@@ -33,13 +34,13 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
     }
 
     @Override
-    public Cloneable pop() throws EmptyStackException {
+    public T pop() throws EmptyStackException {
         try {
             if (!this.isEmpty()) {
                 Cloneable temp = array[this.size() - 1];
                 array[this.size() - 1] = null;
                 counterOfItems--;
-                return temp;
+                return (T) temp;
             } else {
                 throw new EmptyStackException("The array-stack is empty");
             }
@@ -49,10 +50,10 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
     }
 
     @Override
-    public Cloneable peek() throws EmptyStackException {
+    public T peek() throws EmptyStackException {
         try {
             if (!this.isEmpty()) {
-                return array[this.size() - 1];
+                return (T) array[this.size() - 1];
             } else {
                 throw new EmptyStackException("The array-stack is empty");
             }
@@ -73,13 +74,24 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
 
     @Override
     public ArrayStack clone() {
+        ArrayStack<T> copy;
         try {
-            ArrayStack copy = (ArrayStack) super.clone();
-            copy.array = array.clone();
-            return copy;
+            copy = (ArrayStack<T>) super.clone();
         } catch (CloneNotSupportedException e) {
             return null;
         }
+
+        copy.array = new Cloneable[this.maxCapacity];
+
+        for (int i = 0; i < this.counterOfItems; i++) {
+            try {
+                Method method = this.array[i].getClass().getMethod("clone", null);
+                copy.array[i] = (Cloneable) method.invoke(this.array[i]);
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return copy;
     }
 
     @Override

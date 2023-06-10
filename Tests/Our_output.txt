@@ -1,0 +1,149 @@
+Negative capacity!
+The stack is empty
+The stack is empty
+
+stack1 size: 0
+Is empty? true
+Starts iterating stack1...
+Done iterating stack1.
+
+stack1 size: 1
+Is empty? false
+Starts iterating stack1...
+MyCloneable: 1
+Done iterating stack1.
+
+Peek: MyCloneable: 1
+Pop: MyCloneable: 1
+
+stack1 size: 0
+Is empty? true
+Starts iterating stack1...
+Done iterating stack1.
+
+stack2 size: 2
+Is empty? false
+Starts iterating stack2...
+MyCloneable: 2
+MyCloneable: 1
+Done iterating stack2.
+
+Is stack1 == stack3? false
+Is stack2 == stack3? false
+Is stack1 == stack4? false
+Is stack2 == stack4? false
+
+stack3 size: 2
+Is empty? false
+Starts iterating stack3...
+MyCloneable: 2
+MyCloneable: 1
+Done iterating stack3.
+
+stack1 size: 2
+Is empty? false
+Starts iterating stack1...
+MyCloneable: 2
+MyCloneable: 15
+Done iterating stack1.
+
+stack2 size: 2
+Is empty? false
+Starts iterating stack2...
+MyCloneable: 2
+MyCloneable: 15
+Done iterating stack2.
+
+stack3 size: 2
+Is empty? false
+Starts iterating stack3...
+MyCloneable: 2
+MyCloneable: 1
+Done iterating stack3.
+
+stack4 size: 2
+Is empty? false
+Starts iterating stack4...
+MyCloneable: 2
+MyCloneable: 1
+Done iterating stack4.
+
+stack1 size: 3
+Is empty? false
+Starts iterating stack1...
+MyCloneable: 3
+MyCloneable: 2
+MyCloneable: 15
+Done iterating stack1.
+
+stack2 size: 3
+Is empty? false
+Starts iterating stack2...
+MyCloneable: 3
+MyCloneable: 2
+MyCloneable: 15
+Done iterating stack2.
+
+stack3 size: 2
+Is empty? false
+Starts iterating stack3...
+MyCloneable: 2
+MyCloneable: 1
+Done iterating stack3.
+
+stack4 size: 2
+Is empty? false
+Starts iterating stack4...
+MyCloneable: 2
+MyCloneable: 1
+Done iterating stack4.
+
+stack1 size: 4
+Is empty? false
+Starts iterating stack1...
+MyCloneable: 4
+MyCloneable: 3
+MyCloneable: 2
+MyCloneable: 15
+Done iterating stack1.
+
+stack1 size: 5
+Is empty? false
+Starts iterating stack1...
+MyCloneable: 5
+MyCloneable: 4
+MyCloneable: 3
+MyCloneable: 2
+MyCloneable: 15
+Done iterating stack1.
+
+stack2 size: 5
+Is empty? false
+Starts iterating stack2...
+MyCloneable: 5
+MyCloneable: 4
+MyCloneable: 3
+MyCloneable: 2
+MyCloneable: 15
+Done iterating stack2.
+
+stack3 size: 2
+Is empty? false
+Starts iterating stack3...
+MyCloneable: 2
+MyCloneable: 1
+Done iterating stack3.
+
+stack4 size: 2
+Is empty? false
+Starts iterating stack4...
+MyCloneable: 2
+MyCloneable: 1
+Done iterating stack4.
+
+The stack reached its full capacity.
+The stack reached its full capacity.
+
+Testing of part A is over!
+
+

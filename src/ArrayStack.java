@@ -1,6 +1,7 @@
 import java.util.Iterator;
 
 public class ArrayStack<T extends Cloneable> implements Stack<T> {
+    private int counterOfItems;
     private Cloneable[] array;
     private int maxCapacity;
 
@@ -15,7 +16,6 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
         } catch (NegativeCapacityException negativeCapacityException) {
             throw negativeCapacityException;
         }
-
     }
 
     @Override
@@ -23,6 +23,7 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
         try {
             if (this.size() < maxCapacity) {
                 array[this.size() + 1] = element;
+                counterOfItems++;
             } else {
                 throw new StackOverflowException("The size of the array-stack reached it's maximum capacity");
             }
@@ -37,6 +38,7 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
             if (!this.isEmpty()) {
                 Cloneable temp = array[this.size() - 1];
                 array[this.size() - 1] = null;
+                counterOfItems--;
                 return temp;
             } else {
                 throw new EmptyStackException("The array-stack is empty");
@@ -61,21 +63,48 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
 
     @Override
     public int size() {
-        
+        return counterOfItems;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return this.size() == 0;
     }
 
     @Override
-    public Stack clone() {
-        return null;
+    public ArrayStack clone() {
+        try {
+            ArrayStack copy = (ArrayStack) super.clone();
+            copy.array = array.clone();
+            return copy;
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
     }
 
     @Override
     public Iterator iterator() {
-        return null;
+        return new StackIterator<>(this);
+    }
+    public class StackIterator<T> implements Iterator<T> {
+        private ArrayStack arrayStack;
+        private int itemLeft;
+
+        public StackIterator(ArrayStack arrayStack) {
+            this.arrayStack = arrayStack;
+            this.itemLeft = arrayStack.size();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return itemLeft > 0;
+        }
+
+        @Override
+        public T next() {
+            Cloneable temp = arrayStack.array[itemLeft - 1];
+            itemLeft--;
+            return (T) temp;
+        }
     }
 }

@@ -21,7 +21,7 @@ public class Playlist implements Cloneable {
             if (!isSongExist) {
 
             } else {
-                throw new SongAlreadyExistsException("The song is already in playlist")
+                throw new SongAlreadyExistsException("The song is already in playlist");
             }
         } catch (SongAlreadyExistsException songAlreadyExistsException) {
             throw songAlreadyExistsException;

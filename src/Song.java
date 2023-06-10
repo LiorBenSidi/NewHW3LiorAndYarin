@@ -96,6 +96,29 @@ public class Song implements Cloneable {
 
     @Override
     public int hashCode() {
-
+        /*
+        String[] nameSplit = name.split("");
+        String[] artistSplit = artist.split("");
+        String[] genreSplit = String.valueOf(genre).split("");
+        String[] durationSplit = duration.split(":");
+         */
+        int nameAsciiValue = 0;
+        for (int i = 0; i < name.length(); i++) {
+            nameAsciiValue += (int) name.charAt(i);
+        }
+        int artistAsciiValue = 0;
+        for (int i = 0; i < artist.length(); i++) {
+            artistAsciiValue += (int) artist.charAt(i);
+        };
+        String genreStr = String.valueOf(genre);
+        int genreAsciiValue = 0;
+        for (int i = 0; i < genreStr.length(); i++) {
+            genreAsciiValue += (int) genreStr.charAt(i);
+        }
+        int durationAsciiValue = 0;
+        for (int i = 0; i < duration.length(); i++) {
+            durationAsciiValue += (int) duration.charAt(i);
+        }
+        return 3 * (nameAsciiValue + artistAsciiValue + genreAsciiValue + durationAsciiValue);
     }
 }

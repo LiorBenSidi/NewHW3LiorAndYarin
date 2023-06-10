@@ -108,6 +108,10 @@ public class Playlist implements Cloneable {
 
     @Override
     public int hashCode() {
-        return
+        int sum = 0;
+        for (int i = 0; i < playlist.length; i++) {
+            sum += playlist[i].hashCode();
+        }
+        return sum;
     }
 }

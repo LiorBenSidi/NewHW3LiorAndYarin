@@ -1,7 +1,10 @@
+import java.util.Objects;
+
 public class Song implements Cloneable {
     private String name;
     private String artist;
     private Genre genre;
+    private int seconds;
     private String duration;
     private Object[] song;
 
@@ -9,6 +12,7 @@ public class Song implements Cloneable {
         this.name = name;
         this.artist = artist;
         this.genre = genre;
+        this.seconds = seconds;
         int mm = seconds / 60;
         int ss = seconds - (60 * mm);
         this.duration = mm + ":" + ss;
@@ -42,11 +46,20 @@ public class Song implements Cloneable {
     public void setDuration(int seconds) {
         int mm = seconds / 60;
         int ss = seconds - (60 * mm);
+        this.seconds = seconds;
         this.duration = mm + ":" + ss;
     }
 
     public void setSong(Object[] song) {
         this.song = song;
+    }
+
+    public int getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
     }
 
     public enum Genre {
@@ -60,24 +73,23 @@ public class Song implements Cloneable {
 
     @Override
     public String toString() {
-        return "(" + name + ", " + artist + ", " + genre + ", " + duration + ")";
+        return name + ", " + artist + ", " + genre + ", " + duration;
     }
 
     @Override
     public Song clone() {
-        Song copy;
         try {
-            copy = (Song) super.clone();
+            Song copy = (Song) super.clone();
+            copy.name = new String(name);
+            copy.artist = new String(artist);
+            copy.genre = genre;
+            copy.duration = new String(duration);
+            return copy;
         } catch (CloneNotSupportedException e) {
             return null;
         }
 
-        copy.name = new String(name);
-        copy.artist = new String(artist);
-        copy.genre = genre;
-        copy.duration = new String(duration);
 
-        return copy;
     }
 
     @Override
@@ -91,7 +103,7 @@ public class Song implements Cloneable {
         }
 
         Song otherSong = (Song) other;
-        return (name == otherSong.name) && (artist == otherSong.artist);
+        return (Objects.equals(name, otherSong.name)) && (Objects.equals(artist, otherSong.artist));
     }
 
     @Override
@@ -109,7 +121,8 @@ public class Song implements Cloneable {
         int artistAsciiValue = 0;
         for (int i = 0; i < artist.length(); i++) {
             artistAsciiValue += (int) artist.charAt(i);
-        };
+        }
+        /*
         String genreStr = String.valueOf(genre);
         int genreAsciiValue = 0;
         for (int i = 0; i < genreStr.length(); i++) {
@@ -119,6 +132,7 @@ public class Song implements Cloneable {
         for (int i = 0; i < duration.length(); i++) {
             durationAsciiValue += (int) duration.charAt(i);
         }
-        return 3 * (nameAsciiValue + artistAsciiValue + genreAsciiValue + durationAsciiValue);
+         */
+        return 3 * (nameAsciiValue + artistAsciiValue /*+ genreAsciiValue + durationAsciiValue*/);
     }
 }

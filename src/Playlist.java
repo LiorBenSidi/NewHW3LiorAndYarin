@@ -1,6 +1,7 @@
 import java.lang.reflect.Method;
+import java.util.Iterator;
 
-public class Playlist implements Cloneable {
+public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIterable {
     private Song[] playlist;
 
     public Playlist(Song[] playlist) {
@@ -113,5 +114,43 @@ public class Playlist implements Cloneable {
             sum += playlist[i].hashCode();
         }
         return sum;
+    }
+
+    @Override
+    public void filterArtist(String artist) {
+
+    }
+
+    @Override
+    public void filterGenre(Song.Genre genre) {
+
+    }
+
+    @Override
+    public void filterDuration(String duration) {
+
+    }
+
+    @Override
+    public Iterator<Song> iterator() {
+        return null;
+    }
+
+    @Override
+    public void setScanningOrder(ScanningOrder scanningOrder) {
+
+    }
+
+    public class PlaylistIterator implements Iterator<Song> {
+
+        @Override
+        public boolean hasNext() {
+
+        }
+
+        @Override
+        public Song next() {
+
+        }
     }
 }

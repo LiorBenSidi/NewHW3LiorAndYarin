@@ -15,7 +15,11 @@ public class Song implements Cloneable {
         this.seconds = seconds;
         int mm = seconds / 60;
         int ss = seconds - (60 * mm);
-        this.duration = mm + ":" + ss;
+        if (ss / 10 == 0) {
+            this.duration = mm + ":0" + ss;
+        } else {
+            this.duration = mm + ":" + ss;
+        }
         song = new Object[]{name, artist, genre, duration};
     }
 

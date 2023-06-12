@@ -1,4 +1,3 @@
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -10,7 +9,7 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
 
     public Playlist(ArrayList<Song> playlist) {
         this.playlist = playlist;
-        this.filterPlaylist = playlist;
+        this.filterPlaylist = (ArrayList<Song>) this.playlist.clone();
     }
 
     public Playlist() {
@@ -30,14 +29,14 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
                 }
                 if (!isSongExist) {
                     playlist.add(song);
-                    filterPlaylist.add(song.clone());
+                    filterPlaylist.add(song);
 
                 } else {
                     throw new SongAlreadyExistsException("The song is already in playlist");
                 }
             } else {
                 playlist.add(song);
-                filterPlaylist.add(song.clone());
+                filterPlaylist.add(song);
             }
         } catch (SongAlreadyExistsException songAlreadyExistsException) {
             throw songAlreadyExistsException;
@@ -186,22 +185,69 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     @Override
     public void setScanningOrder(ScanningOrder scanningOrder) {
         if (filterPlaylist.size() > 0) {
+            if (scanningOrder == ScanningOrder.ADDING) {
+                // No need to modify the filterPlaylist since it is already in the order of addition.
+                return;
+            }
+
+            if (scanningOrder == ScanningOrder.NAME) {
+                filterPlaylist.sort(Comparator.comparing(Song::getName)
+                        .thenComparing(Song::getArtist));
+            } else if (scanningOrder == ScanningOrder.DURATION) {
+                filterPlaylist.sort(Comparator.comparingInt(Song::getSeconds)
+                        .thenComparing(Song::getName)
+                        .thenComparing(Song::getArtist));
+            }
+        }
+        /*
+        if (filterPlaylist.size() > 0) {
             if (!(scanningOrder == ScanningOrder.ADDING)) {
                 if (scanningOrder == ScanningOrder.NAME) {
+                    ArrayList<ArrayList<Integer>> letters = new ArrayList<>();
+                    for (int i = 0; i < filterPlaylist.size(); i++) {
+                        for (int j = 0; j < filterPlaylist.get(i).getName().length(); j++) {
+                            int lower = 0;
+                            letters.add(new ArrayList<>());
+                            if ((int) filterPlaylist.get(i).getName().charAt(j) != 0) {
+                                if ((int) filterPlaylist.get(i).getName().charAt(j) < 97) {
+                                    lower = (int) filterPlaylist.get(i).getName().charAt(j) + 32;
+                                } else {
+                                    lower = (int) filterPlaylist.get(i).getName().charAt(j);
+                                }
+                            }
+                            letters.get(i).add(lower);
+                        }
+                    }
                     ArrayList<Song> playlistName = new ArrayList<>();
                     for (int i = 0; i < filterPlaylist.size(); i++) {
-
+                        for (int j = 0; j < letters.size(); j++) {
+                            for (int k = 0; )
+                        }
                     }
-                    //...
+
                 } else {
                     ArrayList<Song> playlistDuration = new ArrayList<>();
+                    int temp = 0;
+                    ArrayList<Song> song = new ArrayList<>();
                     for (int i = 0; i < filterPlaylist.size(); i++) {
+                        temp = 0;
+                        song = song = new new ArrayList<>();
+                        for (int j = filterPlaylist.size() - 1; j > 0; j--) {
+                            if (filterPlaylist.get(j).getSeconds() >= temp) {
+                                temp = filterPlaylist.get(j).getSeconds();
+                                song.add(filterPlaylist.get(i));
+                            }
+                            if (song.size() > 1) {
 
+                            }
+                            playlistDuration.set(i, song);
+                        }
                     }
                     //...
                 }
             }
         }
+         */
     }
 
     @Override

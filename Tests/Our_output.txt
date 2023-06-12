@@ -188,7 +188,7 @@ Number of playlists in set: 1
 Starts scanning...
 Unicorn, Noa Kirel, POP, 2:51
 -----------------------------------
-Easter Egg, Dvir ft. Gal, HIP_HOP, 3:50
+Easter Egg, Dvir ft. Gal, HIP_HOP, 7:17
 -----------------------------------
 Take Five, Dave Brubeck, JAZZ, 2:55
 -----------------------------------
@@ -295,8 +295,8 @@ Waterloo, ABBA, POP, 2:42
 After scan number 23.
 
 Starting scan number 24 [POP, 200, null, DURATION]
-Unicorn, Noa Kirel, POP, 2:51
 Waterloo, ABBA, POP, 2:42
+Unicorn, Noa Kirel, POP, 2:51
 After scan number 24.
 
 Starting scan number 25 [POP, 200, Backstreet Boys, ADDING]
@@ -316,13 +316,13 @@ After scan number 28.
 
 Starting scan number 29 [POP, 900, ABBA, NAME]
 Mamma Mia, ABBA, POP, 3:33
-Waterloo, ABBA, POP, 2:42
 Take a Chance on Me, ABBA, POP, 4:20
+Waterloo, ABBA, POP, 2:42
 After scan number 29.
 
 Starting scan number 30 [POP, 900, ABBA, DURATION]
-Mamma Mia, ABBA, POP, 3:33
 Waterloo, ABBA, POP, 2:42
+Mamma Mia, ABBA, POP, 3:33
 Take a Chance on Me, ABBA, POP, 4:20
 After scan number 30.
 
@@ -337,22 +337,22 @@ Take a Chance on Me, ABBA, POP, 4:20
 After scan number 31.
 
 Starting scan number 32 [POP, 900, null, NAME]
-Unicorn, Noa Kirel, POP, 2:51
-Shape of You, Ed Sheeran, POP, 3:54
 Counting Stars, OneRepublic, POP, 4:17
-Shape of My Heart, Backstreet Boys, POP, 3:50
 Mamma Mia, ABBA, POP, 3:33
-Waterloo, ABBA, POP, 2:42
+Shape of My Heart, Backstreet Boys, POP, 3:50
+Shape of You, Ed Sheeran, POP, 3:54
 Take a Chance on Me, ABBA, POP, 4:20
+Unicorn, Noa Kirel, POP, 2:51
+Waterloo, ABBA, POP, 2:42
 After scan number 32.
 
 Starting scan number 33 [POP, 900, null, DURATION]
+Waterloo, ABBA, POP, 2:42
 Unicorn, Noa Kirel, POP, 2:51
+Mamma Mia, ABBA, POP, 3:33
+Shape of My Heart, Backstreet Boys, POP, 3:50
 Shape of You, Ed Sheeran, POP, 3:54
 Counting Stars, OneRepublic, POP, 4:17
-Shape of My Heart, Backstreet Boys, POP, 3:50
-Mamma Mia, ABBA, POP, 3:33
-Waterloo, ABBA, POP, 2:42
 Take a Chance on Me, ABBA, POP, 4:20
 After scan number 33.
 
@@ -464,13 +464,13 @@ Another Easter Egg, Ahmed Jabara, ROCK, 3:47
 After scan number 67.
 
 Starting scan number 68 [ROCK, 900, null, NAME]
-Born In The U.S.A., Bruce Springsteen, ROCK, 4:38
 Another Easter Egg, Ahmed Jabara, ROCK, 3:47
+Born In The U.S.A., Bruce Springsteen, ROCK, 4:38
 After scan number 68.
 
 Starting scan number 69 [ROCK, 900, null, DURATION]
-Born In The U.S.A., Bruce Springsteen, ROCK, 4:38
 Another Easter Egg, Ahmed Jabara, ROCK, 3:47
+Born In The U.S.A., Bruce Springsteen, ROCK, 4:38
 After scan number 69.
 
 Starting scan number 70 [ROCK, 900, Backstreet Boys, ADDING]
@@ -924,9 +924,9 @@ Le Freak, Chic, DISCO, 5:07
 After scan number 211.
 
 Starting scan number 212 [DISCO, 900, null, NAME]
-Y.M.C.A., Village People, DISCO, 3:19
 Dancing Queen, ABBA, DISCO, 3:51
 Le Freak, Chic, DISCO, 5:07
+Y.M.C.A., Village People, DISCO, 3:19
 After scan number 212.
 
 Starting scan number 213 [DISCO, 900, null, DURATION]

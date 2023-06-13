@@ -1,8 +1,6 @@
-import java.util.Objects;
-
 public class Song implements Cloneable {
-    private String name;
-    private String artist;
+    private final String name;
+    private final String artist;
     private Genre genre;
     private int seconds;
     private String duration;
@@ -31,6 +29,9 @@ public class Song implements Cloneable {
 
     public Genre getGenre() {
         return genre;
+    }
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     public void setDuration(int seconds) {
@@ -66,18 +67,6 @@ public class Song implements Cloneable {
         } catch (CloneNotSupportedException e) {
             return null;
         }
-        /*
-        try {
-            Song copy = (Song) super.clone();
-            copy.name = new String(name);
-            copy.artist = new String(artist);
-            copy.genre = genre;
-            copy.duration = new String(duration);
-            return copy;
-        } catch (CloneNotSupportedException e) {
-            return null;
-        }
-         */
     }
 
     @Override
@@ -92,17 +81,10 @@ public class Song implements Cloneable {
 
         Song otherSong = (Song) other;
         return name.equals(otherSong.name) && artist.equals(otherSong.artist);
-        //return (Objects.equals(name, otherSong.name)) && (Objects.equals(artist, otherSong.artist));
     }
 
     @Override
     public int hashCode() {
-        /*
-        String[] nameSplit = name.split("");
-        String[] artistSplit = artist.split("");
-        String[] genreSplit = String.valueOf(genre).split("");
-        String[] durationSplit = duration.split(":");
-         */
         int nameAsciiValue = 0;
         for (int i = 0; i < name.length(); i++) {
             nameAsciiValue += name.charAt(i);
@@ -111,17 +93,7 @@ public class Song implements Cloneable {
         for (int i = 0; i < artist.length(); i++) {
             artistAsciiValue += artist.charAt(i);
         }
-        /*
-        String genreStr = String.valueOf(genre);
-        int genreAsciiValue = 0;
-        for (int i = 0; i < genreStr.length(); i++) {
-            genreAsciiValue += (int) genreStr.charAt(i);
-        }
-        int durationAsciiValue = 0;
-        for (int i = 0; i < duration.length(); i++) {
-            durationAsciiValue += (int) duration.charAt(i);
-        }
-         */
-        return 3 * (nameAsciiValue + artistAsciiValue /*+ genreAsciiValue + durationAsciiValue*/);
+
+        return 3 * (nameAsciiValue + artistAsciiValue);
     }
 }

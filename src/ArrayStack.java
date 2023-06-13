@@ -52,8 +52,8 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
     @Override
     public T peek() throws EmptyStackException {
         try {
-            if (!this.isEmpty()) {
-                return (T) array[this.size() - 1];
+            if (!isEmpty()) {
+                return (T) array[size() - 1];
             } else {
                 throw new EmptyStackException("The array-stack is empty");
             }
@@ -73,7 +73,7 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
     }
 
     @Override
-    public ArrayStack clone() {
+    public ArrayStack<T> clone() {
         ArrayStack<T> copy;
         try {
             copy = (ArrayStack<T>) super.clone();
@@ -81,12 +81,12 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
             return null;
         }
 
-        copy.array = new Cloneable[this.maxCapacity];
+        copy.array = new Cloneable[maxCapacity];
 
-        for (int i = 0; i < this.counterOfItems; i++) {
+        for (int i = 0; i < counterOfItems; i++) {
             try {
-                Method method = this.array[i].getClass().getMethod("clone", null);
-                copy.array[i] = (Cloneable) method.invoke(this.array[i]);
+                Method method = array[i].getClass().getMethod("clone");
+                copy.array[i] = (Cloneable) method.invoke(array[i]);
             } catch (Exception e) {
                 return null;
             }
@@ -95,16 +95,14 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
     }
 
     @Override
-    public Iterator iterator() {
-        return new StackIterator<>(this);
+    public Iterator<T> iterator() {
+        return new StackIterator();
     }
-    public class StackIterator<T> implements Iterator<T> {
-        private ArrayStack arrayStack;
+    public class StackIterator implements Iterator<T> {
         private int itemLeft;
 
-        public StackIterator(ArrayStack arrayStack) {
-            this.arrayStack = arrayStack;
-            this.itemLeft = arrayStack.size();
+        public StackIterator() {
+            this.itemLeft = size();
         }
 
         @Override
@@ -114,9 +112,8 @@ public class ArrayStack<T extends Cloneable> implements Stack<T> {
 
         @Override
         public T next() {
-            Cloneable temp = arrayStack.array[itemLeft - 1];
             itemLeft--;
-            return (T) temp;
+            return (T) array[itemLeft];
         }
     }
 }

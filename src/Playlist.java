@@ -101,7 +101,7 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
         boolean nextCheck = true;
         for (int i = 0; i < playlist.size(); i++) {
             for (int j = 0; (j < playlist.size()) && nextCheck; j++) {
-                if (otherPlaylist.get(i).equals(playlist.get(j))) {
+                if(otherPlaylist.get(i).equals(playlist.get(j))) {
                     isSamePlaylistSong = true;
                     nextCheck = false;
                 }

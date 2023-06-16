@@ -22,11 +22,12 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
      * @throws SongAlreadyExistsException  if the provided song to add is already exists in the playlist
      */
     public void addSong(Song song) {
-        if (playlist.contains(song)) {
+        if (!(playlist.contains(song))) {
+            playlist.add(song);
+            filteredPlaylist.add(song);
+        } else {
             throw new SongAlreadyExistsException();
         }
-        playlist.add(song);
-        filteredPlaylist.add(song);
     }
 
     /**
@@ -92,35 +93,27 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
             return false;
         }
 
-        if (!(other instanceof Playlist)) {
+        if(!(this.hashCode() == other.hashCode()) || !(other instanceof Playlist)) {
             return false;
         }
 
         ArrayList<Song> otherPlaylist = ((Playlist) other).playlist;
         boolean isSamePlaylistSong = false;
         boolean nextCheck = true;
-        if (playlist.size() != otherPlaylist.size()) {
-            return false;
-        } else {
-            if (playlist.isEmpty()) {
-                return true;
-            } else {
-                for (int i = 0; i < playlist.size(); i++) {
-                    for (int j = 0; (j < playlist.size()) && nextCheck; j++) {
-                        if(otherPlaylist.get(i).equals(playlist.get(j))) {
-                            isSamePlaylistSong = true;
-                            nextCheck = false;
-                        }
-                    }
-                    if(isSamePlaylistSong) {
-                        nextCheck = true;
-                    } else {
-                        return false;
-                    }
+        for (int i = 0; i < playlist.size(); i++) {
+            for (int j = 0; (j < playlist.size()) && nextCheck; j++) {
+                if(otherPlaylist.get(i).equals(playlist.get(j))) {
+                    isSamePlaylistSong = true;
+                    nextCheck = false;
                 }
             }
-        }
+            if(isSamePlaylistSong) {
+                nextCheck = true;
+            } else {
+                return false;
+            }
 
+        }
         return true;
     }
 

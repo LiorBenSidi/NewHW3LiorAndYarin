@@ -98,7 +98,7 @@ public class Song implements Cloneable {
             return false;
         }
 
-        if (!(other instanceof Song)) {
+        if(!(this.hashCode() == other.hashCode()) || !(other instanceof Song)) {
             return false;
         }
 
@@ -125,17 +125,7 @@ public class Song implements Cloneable {
             artistAsciiValue += artist.charAt(i);
         }
 
-        /* Sum up the ascii value of each letter in the string representation of genre. */
-        String genreStr = String.valueOf(genre);
-        int genreAsciiValue = 0;
-        for (int i = 0; i < genreStr.length(); i++) {
-            genreAsciiValue += genreStr.charAt(i);
-        }
-
-        /* The numerical value of seconds. */
-        int durationValue = seconds;
-
-        /* Multiply by 3 and 5 (prime numbers) to ensure difference. */
-        return  (3 * nameAsciiValue) + (5 * artistAsciiValue) + (3 * genreAsciiValue) +  (5 * durationValue);
+        /* Multiply by 3 and 5 (prime number) to ensure difference. */
+        return (3 * nameAsciiValue) + (5 * artistAsciiValue);
     }
 }

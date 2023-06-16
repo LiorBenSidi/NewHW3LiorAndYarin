@@ -50,7 +50,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
      */
     @Override
     public E pop() {
-        if (!this.isEmpty()) {
+        if (!(this.isEmpty())) {
             Cloneable topElement = array[this.size() - 1];
             array[this.size() - 1] = null;
             counterOfItems--;

@@ -18,8 +18,8 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     /**
      * Adds a song to the playlist.
      *
-     * @param song the song we want to add
-     * @throws SongAlreadyExistsException  if the song we want to add is already exists in the playlist
+     * @param song the provided song to add
+     * @throws SongAlreadyExistsException  if the provided song to add is already exists in the playlist
      */
     public void addSong(Song song) {
         if (playlist.contains(song)) {
@@ -32,8 +32,8 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     /**
      * Removes a song from the playlist.
      *
-     * @param song the song we want to remove
-     * @return true if the song was able to remove successfully, false otherwise
+     * @param song the requested song to remove
+     * @return true if the requested song was able to remove successfully, false otherwise
      */
     public boolean removeSong(Song song) {
         boolean isRemoved = playlist.remove(song);
@@ -131,11 +131,6 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
         return sum;
     }
 
-    /**
-     * Filters the playlist by the attribute artist of the songs.
-     *
-     * @param artist the artist provided to filter the playlist by
-     */
     @Override
     public void filterArtist(String artist) {
          if (artist != null) {
@@ -150,11 +145,6 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
          }
     }
 
-    /**
-     * Filters the playlist by the attribute genre of the songs.
-     *
-     * @param genre the genre provided to filter the playlist by
-     */
     @Override
     public void filterGenre(Song.Genre genre) {
         if (genre != null){
@@ -169,11 +159,6 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
         }
     }
 
-    /**
-     * Filters the playlist by the maximum duration(by seconds).
-     *
-     * @param maxSeconds the maximum duration in seconds
-     */
     @Override
     public void filterDuration(int maxSeconds) {
         int i = 0;
@@ -186,13 +171,6 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
         }
     }
 
-
-    /**
-     * Sets the scanning order for the playlist according to the provided requested order.
-     * Also, in according to the provided instructions.
-     *
-     * @param scanningOrder the scanning order to be set
-     */
     @Override
     public void setScanningOrder(ScanningOrder scanningOrder) {
         if (filteredPlaylist.size() > 0) {

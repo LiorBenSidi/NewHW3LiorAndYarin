@@ -137,7 +137,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
         private int itemsLeft;
 
         public StackIterator() {
-            this.itemsLeft = size();
+            this.itemsLeft = ArrayStack.this.size();
         }
 
         /**

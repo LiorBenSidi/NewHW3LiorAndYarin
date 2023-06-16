@@ -1,4 +1,3 @@
-import java.lang.reflect.Method;
 import java.util.Iterator;
 
 /**
@@ -107,8 +106,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
             copy.array = copy.array.clone();
             for (int i = 0; i < counterOfItems; i++) {
                 try {
-                    Method method = array[i].getClass().getMethod("clone");
-                    copy.array[i] = (E) method.invoke(array[i]);
+                    copy.array[i] = (E) array[i].getClass().getMethod("clone").invoke(array[i]);
                 } catch (Exception e) {
                     return null;
                 }

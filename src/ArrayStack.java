@@ -1,3 +1,4 @@
+import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 
 /**
@@ -107,7 +108,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
             for (int i = 0; i < counterOfItems; i++) {
                 try {
                     copy.array[i] = (E) array[i].getClass().getMethod("clone").invoke(array[i]);
-                } catch (Exception e) {
+                } catch (InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
                     return null;
                 }
             }

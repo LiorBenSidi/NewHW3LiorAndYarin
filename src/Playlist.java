@@ -80,11 +80,11 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     }
 
     /**
-     * Checks if the current playlist object is equal to other provided object.
+     * Checks if the current playlist is equal to other provided playlist.
      * In according to the provided instructions.
      *
      * @param other the object provided to compare to
-     * @return true if the current playlist object is equal to the other provided object, false otherwise
+     * @return true if the current playlist is equal to the other provided playlist, false otherwise
      */
     @Override
     public boolean equals(Object other) {
@@ -92,33 +92,40 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
             return false;
         }
 
-        if(!(this.hashCode() == other.hashCode()) || !(other instanceof Playlist)) {
+        if (!(other instanceof Playlist)) {
             return false;
         }
 
         ArrayList<Song> otherPlaylist = ((Playlist) other).playlist;
         boolean isSamePlaylistSong = false;
         boolean nextCheck = true;
-        for (int i = 0; i < playlist.size(); i++) {
-            for (int j = 0; (j < playlist.size()) && nextCheck; j++) {
-                if(otherPlaylist.get(i).equals(playlist.get(j))) {
-                    isSamePlaylistSong = true;
-                    nextCheck = false;
+        if (playlist.size() != otherPlaylist.size()) {
+            return false;
+        } else {
+            if (playlist.isEmpty()) {
+                return true;
+            } else {
+                for (int i = 0; i < playlist.size(); i++) {
+                    for (int j = 0; (j < playlist.size()) && nextCheck; j++) {
+                        if(otherPlaylist.get(i).equals(playlist.get(j))) {
+                            isSamePlaylistSong = true;
+                            nextCheck = false;
+                        }
+                    }
+                    if(isSamePlaylistSong) {
+                        nextCheck = true;
+                    } else {
+                        return false;
+                    }
                 }
             }
-            if(isSamePlaylistSong) {
-                nextCheck = true;
-            } else {
-                return false;
-            }
-
         }
+
         return true;
     }
 
     /**
      * Returns the hash code value of the current playlist object.
-     * In according to the provided instructions.
      *
      * @return the hash code of the current playlist object
      */

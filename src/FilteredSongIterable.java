@@ -1,26 +1,26 @@
 /**
- * An iterable collection of songs that can be filtered based on various criteria.
+ * An interface that represents an iterable collection of songs that can be filtered.
  */
 public interface FilteredSongIterable extends Iterable<Song>{
 
     /**
-     * Filters the songs by the specified artist.
+     * Filters the playlist by the attribute artist of the songs.
      *
-     * @param artist the artist name to filter by
+     * @param artist the artist provided to filter the playlist by
      */
-    public void filterArtist(String artist);
+    void filterArtist(String artist);
 
     /**
-     * Filters the songs by the specified genre.
+     * Filters the playlist by the attribute genre of the songs.
      *
-     * @param genre the genre to filter by
+     * @param genre the genre provided to filter the playlist by
      */
-    public void filterGenre(Song.Genre genre);
+    void filterGenre(Song.Genre genre);
 
     /**
-     * Filters the songs by the maximum duration in seconds.
+     * Filters the playlist by the maximum duration(by seconds).
      *
-     * @param maxSeconds the maximum duration in seconds to filter by
+     * @param maxSeconds the maximum duration in seconds
      */
-    public void filterDuration(int maxSeconds);
+    void filterDuration(int maxSeconds);
 }

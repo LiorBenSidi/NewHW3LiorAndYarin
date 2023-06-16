@@ -3,15 +3,12 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 /**
- * A class representing a playlist of songs.
+ * A class that represents a playlist of songs.
  */
 public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIterable {
     private ArrayList<Song> playlist;
     private ArrayList<Song> filteredPlaylist;
 
-    /**
-     * Constructs an empty Playlist.
-     */
     public Playlist() {
         playlist = new ArrayList<>();
         filteredPlaylist = new ArrayList<>();
@@ -21,8 +18,8 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     /**
      * Adds a song to the playlist.
      *
-     * @param song the song to be added
-     * @throws SongAlreadyExistsException if the song already exists in the playlist
+     * @param song the song we want to add
+     * @throws SongAlreadyExistsException  if the song we want to add is already exists in the playlist
      */
     public void addSong(Song song) {
         if (playlist.contains(song)) {
@@ -35,8 +32,8 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     /**
      * Removes a song from the playlist.
      *
-     * @param song the song to be removed
-     * @return true if the song was removed successfully, false otherwise
+     * @param song the song we want to remove
+     * @return true if the song was able to remove successfully, false otherwise
      */
     public boolean removeSong(Song song) {
         boolean isRemoved = playlist.remove(song);
@@ -46,9 +43,9 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
 
 
     /**
-     * Returns a string representation of the playlist.
+     * Returns a string that represents the playlist.
      *
-     * @return a string representation of the playlist
+     * @return a string that represents the playlist
      */
     @Override
     public String toString() {
@@ -64,9 +61,9 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     }
 
     /**
-     * Creates a clone of the playlist.
+     * Creates and returns a deep copy of the object playlist.
      *
-     * @return a clone of the playlist
+     * @return a deep copy of the object playlist
      */
     @Override
     public Playlist clone() {
@@ -83,10 +80,11 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     }
 
     /**
-     * Checks if the playlist is equal to another object.
+     * Checks if the current playlist object is equal to other provided object.
+     * In according to the provided instructions.
      *
-     * @param other the object to compare
-     * @return true if the playlist is equal to the other object, false otherwise
+     * @param other the object provided to compare to
+     * @return true if the current playlist object is equal to the other provided object, false otherwise
      */
     @Override
     public boolean equals(Object other) {
@@ -119,9 +117,10 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     }
 
     /**
-     * Returns the hash code of the playlist.
+     * Returns the hash code value of the current playlist object.
+     * In according to the provided instructions.
      *
-     * @return the hash code of the playlist
+     * @return the hash code of the current playlist object
      */
     @Override
     public int hashCode() {
@@ -133,9 +132,9 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     }
 
     /**
-     * Filters the playlist by artist.
+     * Filters the playlist by the attribute artist of the songs.
      *
-     * @param artist the artist to filter by
+     * @param artist the artist provided to filter the playlist by
      */
     @Override
     public void filterArtist(String artist) {
@@ -152,9 +151,9 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     }
 
     /**
-     * Filters the playlist by genre.
+     * Filters the playlist by the attribute genre of the songs.
      *
-     * @param genre the genre to filter by
+     * @param genre the genre provided to filter the playlist by
      */
     @Override
     public void filterGenre(Song.Genre genre) {
@@ -171,7 +170,7 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     }
 
     /**
-     * Filters the playlist by maximum duration.
+     * Filters the playlist by the maximum duration(by seconds).
      *
      * @param maxSeconds the maximum duration in seconds
      */
@@ -189,7 +188,8 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
 
 
     /**
-     * Sets the scanning order for the playlist.
+     * Sets the scanning order for the playlist according to the provided requested order.
+     * Also, in according to the provided instructions.
      *
      * @param scanningOrder the scanning order to be set
      */
@@ -212,9 +212,9 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     }
 
     /**
-     * Returns an iterator over the songs in the playlist.
+     * Returns an iterator to use for iterating over the songs in the playlist.
      *
-     * @return an iterator over the songs in the playlist
+     * @return an iterator to use for iterating over the songs in the playlist
      */
     @Override
     public Iterator<Song> iterator() {
@@ -222,22 +222,19 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     }
 
     /**
-     * An iterator for iterating over the songs in the playlist.
+     * An inner class, that represents an iterator for iterating over the songs in the playlist.
      */
     public class PlaylistIterator implements Iterator<Song> {
         private int counter;
 
-        /**
-         * Constructs a PlaylistIterator.
-         */
         public PlaylistIterator() {
             counter = 0;
         }
 
         /**
-         * Checks if there are more songs to iterate over.
+         * Checks if there are remaining songs to iterate over.
          *
-         * @return true if there are more songs, false otherwise
+         * @return true if there are remaining songs to iterate over, false otherwise
          */
         @Override
         public boolean hasNext() {
@@ -254,9 +251,9 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
         }
 
         /**
-         * Returns the next song in the iteration.
+         * If there are remaining songs to iterate over, returns the next song in the iteration.
          *
-         * @return the next song
+         * @return the next song in the iteration
          */
         @Override
         public Song next() {

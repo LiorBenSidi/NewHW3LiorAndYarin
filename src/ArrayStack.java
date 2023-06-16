@@ -2,9 +2,9 @@ import java.lang.reflect.Method;
 import java.util.Iterator;
 
 /**
- * A stack implementation using an array.
+ * A generic class that implements a stack using an array.
  *
- * @param <E> the type of elements in the stack
+ * @param <E> the generic type of elements in our implementation of stack
  */
 public class ArrayStack<E extends Cloneable> implements Stack<E> {
     private int counterOfItems;
@@ -12,10 +12,10 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
     private final int maxCapacity;
 
     /**
-     * Constructs an ArrayStack with the specified maximum capacity.
+     * Constructs an ArrayStack according to the provided maximum capacity(if valid).
      *
-     * @param maxCapacity the maximum capacity of the stack
-     * @throws NegativeCapacityException if the provided capacity is negative
+     * @param maxCapacity the provided maximum capacity of the stack
+     * @throws NegativeCapacityException if the provided maximum capacity is negative
      */
     public ArrayStack(int maxCapacity) {
         if (maxCapacity >= 0) {
@@ -27,10 +27,10 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
     }
 
     /**
-     * Pushes an element onto the top of the stack.
+     * Pushes a provided element to the top of the stack.
      *
-     * @param element the element to be pushed
-     * @throws StackOverflowException if the stack is already full
+     * @param element the provided element
+     * @throws StackOverflowException if the stack is already full(We reached the maximum capacity)
      */
     @Override
     public void push(Cloneable element) {
@@ -43,10 +43,10 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
     }
 
     /**
-     * Removes and returns the element at the top of the stack.
+     * Removes and returns(if the stack is not empty) the element at the top of the stack.
      *
-     * @return the element at the top of the stack
-     * @throws EmptyStackException if the stack is empty
+     * @return the element that is at the top of the stack
+     * @throws EmptyStackException if the stack is empty(there are no element we can remove)
      */
     @Override
     public E pop() {
@@ -61,10 +61,10 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
     }
 
     /**
-     * Returns the element at the top of the stack without removing it.
+     * Returns the element(if the stack is not empty) at the top of the stack, but without removing it.
      *
-     * @return the element at the top of the stack
-     * @throws EmptyStackException if the stack is empty
+     * @return the element that is at the top of the stack
+     * @throws EmptyStackException if the stack is empty(there are no element we can look at)
      */
     @Override
     public E peek() {
@@ -121,9 +121,9 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
     }
 
     /**
-     * Returns an iterator over the elements in the stack.
+     * Returns an iterator to use for iterating over the elements in the stack.
      *
-     * @return an iterator over the elements in the stack
+     * @return an iterator to use for iterating over the elements in the stack
      */
     @Override
     public Iterator<E> iterator() {
@@ -131,7 +131,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
     }
 
     /**
-     * Iterator implementation for ArrayStack.
+     * An inner class, that represents an iterator for iterating over the elements in the ArrayStack.
      */
     public class StackIterator implements Iterator<E> {
         private int itemsLeft;
@@ -141,9 +141,9 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
         }
 
         /**
-         * Checks if there are more elements in the stack to iterate over.
+         * Checks if there are remaining elements in the stack to iterate over.
          *
-         * @return true if there are more elements, false otherwise
+         * @return true if there are remaining elements in the stack to iterate over, false otherwise
          */
         @Override
         public boolean hasNext() {
@@ -151,7 +151,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
         }
 
         /**
-         * Returns the next element in the stack.
+         * If there are remaining elements in the stack to iterate over, returns the next element in the stack.
          *
          * @return the next element in the stack
          */

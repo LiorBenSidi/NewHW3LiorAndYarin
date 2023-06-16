@@ -1,5 +1,5 @@
 /**
- * A class representing a song.
+ * A class that represents a songs(with its requested attributes).
  */
 public class Song implements Cloneable {
     private final String name;
@@ -8,14 +8,6 @@ public class Song implements Cloneable {
     private int seconds;
     private String duration;
 
-    /**
-     * Constructs a Song object with the specified name, artist, genre, and duration in seconds.
-     *
-     * @param name     the name of the song
-     * @param artist   the artist of the song
-     * @param genre    the genre of the song
-     * @param seconds  the duration of the song in seconds
-     */
     public Song(String name, String artist, Genre genre, int seconds) {
         this.name = name;
         this.artist = artist;
@@ -30,48 +22,22 @@ public class Song implements Cloneable {
         }
     }
 
-
-    /**
-     * Returns the name of the song.
-     *
-     * @return the name of the song
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Returns the artist of the song.
-     *
-     * @return the artist of the song
-     */
     public String getArtist() {
         return artist;
     }
 
-    /**
-     * Returns the genre of the song.
-     *
-     * @return the genre of the song
-     */
     public Genre getGenre() {
         return genre;
     }
 
-    /**
-     * Sets the genre of the song.
-     *
-     * @param genre the genre of the song
-     */
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
 
-    /**
-     * Sets the duration of the song in seconds.
-     *
-     * @param seconds the duration of the song in seconds
-     */
     public void setDuration(int seconds) {
         int mm = seconds / 60;
         int ss = seconds - (60 * mm);
@@ -79,17 +45,12 @@ public class Song implements Cloneable {
         this.duration = mm + ":" + ss;
     }
 
-    /**
-     * Returns the duration of the song in seconds.
-     *
-     * @return the duration of the song in seconds
-     */
     public int getSeconds() {
         return seconds;
     }
 
     /**
-     * An enumeration representing the genre of a song.
+     * An enum that represents the genre of a song.
      */
     public enum Genre {
         POP,
@@ -101,9 +62,9 @@ public class Song implements Cloneable {
     }
 
     /**
-     * Returns a string representation of the song.
+     * Returns a string that represents the song.
      *
-     * @return a string representation of the song
+     * @return a string that represents the song
      */
     @Override
     public String toString() {
@@ -111,9 +72,9 @@ public class Song implements Cloneable {
     }
 
     /**
-     * Creates and returns a copy of this Song object.
+     * Creates and returns a deep copy of the object song.
      *
-     * @return a copy of this Song object
+     * @return a deep copy of the object song
      */
     @Override
     public Song clone() {
@@ -125,10 +86,11 @@ public class Song implements Cloneable {
     }
 
     /**
-     * Checks if this Song object is equal to the specified object.
+     * Checks if the current song object is equal to other provided object.
+     * In according to the provided instructions.
      *
-     * @param other the object to compare with this Song object
-     * @return true if the objects are equal, false otherwise
+     * @param other the object provided to compare to
+     * @return true if the current song object is equal to the other provided object, false otherwise
      */
     @Override
     public boolean equals(Object other) {
@@ -145,9 +107,10 @@ public class Song implements Cloneable {
     }
 
     /**
-     * Returns the hash code value for this Song object.
+     * Returns the hash code value for the current Song object.
+     * In according to the provided instructions.
      *
-     * @return the hash code value for this Song object
+     * @return the hash code value for the current Song object
      */
     @Override
     public int hashCode() {

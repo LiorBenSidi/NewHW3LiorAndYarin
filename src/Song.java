@@ -50,7 +50,7 @@ public class Song implements Cloneable {
     }
 
     /**
-     * An enum that represents the genre of a song.
+     * An inner enum that represents the genre of a song.
      */
     public enum Genre {
         POP,
@@ -114,15 +114,19 @@ public class Song implements Cloneable {
      */
     @Override
     public int hashCode() {
+        /* Sum up the ascii value of each letter in the name. */
         int nameAsciiValue = 0;
         for (int i = 0; i < name.length(); i++) {
             nameAsciiValue += name.charAt(i);
         }
+
+        /* Sum up the ascii value of each letter in the artist. */
         int artistAsciiValue = 0;
         for (int i = 0; i < artist.length(); i++) {
             artistAsciiValue += artist.charAt(i);
         }
 
+        /* Multiply by 3 (prime number) to ensure difference. */
         return 3 * (nameAsciiValue + artistAsciiValue);
     }
 }

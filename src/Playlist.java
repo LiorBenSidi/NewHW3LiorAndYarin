@@ -235,8 +235,7 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
          */
         @Override
         public Song next() {
-            counter++;
-            return filteredPlaylist.get(counter - 1);
+            return filteredPlaylist.get(counter++);
         }
     }
 }

@@ -156,8 +156,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
          */
         @Override
         public E next() {
-            itemsLeft--;
-            return (E) array[itemsLeft];
+            return (E) array[--itemsLeft];
         }
     }
 }

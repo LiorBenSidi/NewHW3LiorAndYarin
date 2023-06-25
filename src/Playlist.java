@@ -19,7 +19,7 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
      * Adds a song to the playlist.
      *
      * @param song the provided song to add
-     * @throws SongAlreadyExistsException  if the provided song to add is already exists in the playlist
+     * @throws SongAlreadyExistsException if the provided song to add is already exists in the playlist
      */
     public void addSong(Song song) {
         if (!(playlist.contains(song))) {

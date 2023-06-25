@@ -116,7 +116,6 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
         } catch (CloneNotSupportedException e) {
             return null;
         }
-
     }
 
     /**

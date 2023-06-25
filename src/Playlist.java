@@ -12,7 +12,6 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
     public Playlist() {
         playlist = new ArrayList<>();
         filteredPlaylist = new ArrayList<>();
-
     }
 
     /**
@@ -58,7 +57,6 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
             }
         }
         return "[" + builder + "]";
-
     }
 
     /**
@@ -112,7 +110,6 @@ public class Playlist implements Cloneable, FilteredSongIterable, OrderedSongIte
             } else {
                 return false;
             }
-
         }
         return true;
     }
